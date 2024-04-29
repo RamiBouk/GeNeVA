@@ -6,6 +6,9 @@ pip install torch==1.8.1+cu111 -f https://download.pytorch.org/whl/torch_stable.
 
 export PYTHONPATH="$(dirname $0)/geneva:${PYTHONPATH}"
 
+python -c "import nltk; nltk.download('punkt')"
+
+
 ```
 # Generative Neural Visual Artist (GeNeVA): GeNeVA-GAN Training Code
 
