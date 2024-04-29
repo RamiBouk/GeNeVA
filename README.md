@@ -1,3 +1,12 @@
+# New setup steps:
+```
+conda env create -f environemnt.yml
+
+pip install torch==1.8.1+cu111 -f https://download.pytorch.org/whl/torch_stable.html
+
+export PYTHONPATH="$(dirname $0)/geneva:${PYTHONPATH}"
+
+```
 # Generative Neural Visual Artist (GeNeVA): GeNeVA-GAN Training Code
 
 Code to train and evaluate the GeNeVA-GAN model for the GeNeVA task proposed in our ICCV 2019 paper [Tell, Draw, and Repeat: Generating and Modifying Images Based on Continual Linguistic Instruction](https://arxiv.org/abs/1811.09845).

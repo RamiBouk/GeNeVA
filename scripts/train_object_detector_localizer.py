@@ -383,11 +383,11 @@ class CoDrawSingleAllDataset(torch.utils.data.Dataset):
         return sample
 
 
-def save_checkpoint(state, is_best, filename='inception_latest_checkpoint.pth', prefix=''):
+def save_checkpoint(state, is_best, filename='models/inception_latest_checkpoint.pth', prefix=''):
     filename = prefix + filename
     torch.save(state, filename)
     if is_best:
-        shutil.copyfile(filename, prefix + 'inception_best_checkpoint.pth')
+        shutil.copyfile(filename, prefix + 'models/inception_best_checkpoint.pth')
 
 
 def setup_inception_model(num_classes, pretrained=False, num_coords=3):
@@ -399,7 +399,7 @@ def setup_inception_model(num_classes, pretrained=False, num_coords=3):
 def get_class_weights(train_loader, num_objects):
     n_total = np.zeros((num_objects,))
     for i, sample in enumerate(tqdm(train_loader)):
-        n_total += sample['bow'].sum(dim=0)
+        n_total += np.array(sample['bow'].sum(dim=0))
 
     n_total /= n_total.sum()
     n_total = 1. / n_total

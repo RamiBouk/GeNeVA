@@ -24,6 +24,7 @@ class SentenceEncoder(nn.Module):
 
     def forward(self, words, lengths):
         lengths = lengths.long()
+        lengths = lengths.cpu()
         reorder = False
         sorted_len, indices = torch.sort(lengths, descending=True)
         if not torch.equal(sorted_len, lengths):
@@ -35,7 +36,7 @@ class SentenceEncoder(nn.Module):
         lengths[lengths == 0] = 1
 
         packed_padded_sequence = pack_padded_sequence(words,
-                                                      lengths,
+                                                      lengths.cpu(),
                                                       batch_first=True)
 
         self.gru.flatten_parameters()

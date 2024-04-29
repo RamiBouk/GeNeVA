@@ -139,7 +139,7 @@ class RecurrentGAN():
             _, current_image_feat, _ = self.image_encoder(image)
 
             turn_embedding = self.sentence_encoder(turns_word_embedding,
-                                                   turns_lengths)
+                                                   turns_lengths.cpu())
             rnn_condition, current_image_feat = \
                 self.condition_encoder(turn_embedding,
                                        image_vec,

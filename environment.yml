@@ -20,5 +20,4 @@ dependencies:
   - pytorch=0.4.1=py36_cuda9.0.176_cudnn7.1.2_1
   - torchvision=0.2.1=py36_1
   - pip:
-    - torch==1.8.1+cu111 -f https://download.pytorch.org/whl/torch_stable.html
     - visdom==0.1.8.5
